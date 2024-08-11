@@ -52,6 +52,13 @@ export default function Home() {
     })
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
   return (
     <Box 
       width="100vw" 
@@ -123,6 +130,7 @@ export default function Home() {
             fullWidth
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <Button variant="contained" onClick={sendMessage}>
             Send
