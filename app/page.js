@@ -1,7 +1,8 @@
 'use client'
-import Image from "next/image"
 import {useState} from "react"
 import {Box, Stack, TextField, Button, Typography} from '@mui/material'
+import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -79,6 +80,7 @@ export default function Home() {
         justifyContent="center"
         margin={1}
         bgcolor="#CF9FFF"
+        boxShadow={10}
       >
         <Typography variant="h2" color="white">
           WANDER BOT
@@ -93,6 +95,7 @@ export default function Home() {
         p={2}
         spacing={3}
         bgcolor="#f0f0f0"
+        boxShadow={24}
       >
         <Stack
           direction="column"
@@ -118,7 +121,10 @@ export default function Home() {
                   borderRadius={16}
                   p={3}
                 >
-                  {message.content}
+                  {message.role === 'user' ? 'You' : 'Assistant'}:
+                  <ReactMarkdown>
+                    {message.content}
+                  </ReactMarkdown>
                 </Box>
               </Box>
             ))
